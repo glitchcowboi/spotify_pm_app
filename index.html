@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalinda — Product Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #111;
+      --bg-card: #1a1a1a;
+      --text: #e5e5e5;
+      --text-muted: #888;
+      --accent: #1DB954;
+      --border: #333;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle noise texture overlay for analog feel */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.015;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      padding: 80px 0 60px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    header .tagline {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    header .contact {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    header .contact a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+
+    header .contact a:hover {
+      border-color: var(--accent);
+    }
+
+    /* Bio */
+    .bio {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .bio p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    /* Section titles */
+    .section-title {
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    /* Selected Work */
+    .work {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project {
+      margin-bottom: 60px;
+    }
+
+    .project:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-header {
+      margin-bottom: 16px;
+    }
+
+    .project-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .project-context {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .project-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-body p {
+      margin-bottom: 16px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .project-body p:last-of-type {
+      margin-bottom: 20px;
+    }
+
+    .project-links {
+      margin-bottom: 20px;
+    }
+
+    .project-links a {
+      display: inline-block;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-right: 20px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--accent);
+    }
+
+    .project-links a:hover {
+      color: var(--accent);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--text-muted);
+    }
+
+    /* Vibe Coded */
+    .vibe-coded {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .vibe-coded .section-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: -20px;
+      margin-bottom: 32px;
+    }
+
+    .vibe-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .vibe-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 20px;
+      text-decoration: none;
+      transition: border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vibe-card:hover {
+      border-color: var(--accent);
+    }
+
+    /* Subtle scanline effect on vibe cards for glitch aesthetic */
+    .vibe-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+      );
+      pointer-events: none;
+    }
+
+    .vibe-card h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .vibe-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    footer .name {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    footer .contact-footer {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    footer .contact-footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    footer .contact-footer a:hover {
+      color: var(--accent);
+    }
+
+    /* iPod Section */
+    .ipod-section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ipod-section .section-intro {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: -20px;
+      margin-bottom: 32px;
+    }
+
+    .ipod-container {
+      position: relative;
+      width: 280px;
+      margin: 0 auto;
+    }
+
+    .ipod-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .ipod-screen {
+      position: absolute;
+      top: 10.5%;
+      left: 17.5%;
+      width: 65%;
+      height: 37%;
+      background: linear-gradient(180deg, #2a3a2a 0%, #1a2a1a 100%);
+      display: flex;
+      flex-direction: column;
+      padding: 8px;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .ipod-screen-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8px;
+      color: #4a5a4a;
+      margin-bottom: 6px;
+      font-family: 'Chicago', 'Inter', sans-serif;
+    }
+
+    .ipod-now-playing {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .ipod-album-art {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, #1DB954 0%, #0d5a2a 100%);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ipod-album-art svg {
+      width: 24px;
+      height: 24px;
+      opacity: 0.6;
+    }
+
+    .ipod-track-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .ipod-track-title {
+      font-size: 9px;
+      color: #8fa88f;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ipod-track-artist {
+      font-size: 8px;
+      color: #5a7a5a;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ipod-progress {
+      margin-top: auto;
+    }
+
+    .ipod-progress-bar {
+      height: 3px;
+      background: #2a3a2a;
+      border-radius: 1px;
+      overflow: hidden;
+      margin-bottom: 3px;
+    }
+
+    .ipod-progress-fill {
+      height: 100%;
+      width: 35%;
+      background: #5a8a5a;
+      border-radius: 1px;
+    }
+
+    .ipod-progress-time {
+      display: flex;
+      justify-content: space-between;
+      font-size: 7px;
+      color: #4a6a4a;
+    }
+
+    /* Click wheel interactive areas */
+    .ipod-click-wheel {
+      position: absolute;
+      bottom: 6%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 58%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .wheel-button {
+      position: absolute;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: transparent;
+      transition: background 0.1s;
+    }
+
+    .wheel-button:active {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .wheel-center {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 38%;
+      height: 38%;
+      border-radius: 50%;
+    }
+
+    .wheel-top {
+      top: 0;
+      left: 25%;
+      width: 50%;
+      height: 30%;
+      border-radius: 50% 50% 0 0;
+    }
+
+    .wheel-bottom {
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 30%;
+      border-radius: 0 0 50% 50%;
+    }
+
+    .wheel-left {
+      top: 25%;
+      left: 0;
+      width: 30%;
+      height: 50%;
+      border-radius: 50% 0 0 50%;
+    }
+
+    .wheel-right {
+      top: 25%;
+      right: 0;
+      width: 30%;
+      height: 50%;
+      border-radius: 0 50% 50% 0;
+    }
+
+    /* Connect button */
+    .spotify-connect-btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .spotify-connect-btn:hover {
+      border-color: var(--accent);
+    }
+
+    .spotify-connect-btn.hidden {
+      display: none;
+    }
+
+    /* iPod hint */
+    .ipod-hint {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .ipod-hint span {
+      opacity: 0.6;
+    }
+
+    /* Spotify embed fallback */
+    .spotify-embed {
+      margin-top: 20px;
+      display: none;
+    }
+
+    .spotify-embed.visible {
+      display: block;
+    }
+
+    .ipod-album-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 600px) {
+      header {
+        padding: 60px 0 40px;
+      }
+
+      header h1 {
+        font-size: 1.6rem;
+      }
+
+      header .tagline {
+        font-size: 1rem;
+      }
+
+      .bio, .work, .vibe-coded {
+        padding: 40px 0;
+      }
+
+      .project-title {
+        font-size: 1.2rem;
+      }
+
+      .vibe-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        margin-bottom: 24px;
+      }
+
+      .project {
+        margin-bottom: 48px;
+      }
+
+      .ipod-container {
+        width: 220px;
+      }
+
+      .ipod-section {
+        padding: 40px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <h1>Kalinda</h1>
+      <p class="tagline">Product Manager — shipping at the intersection of technology and culture</p>
+      <div class="contact">
+        <a href="https://www.linkedin.com/in/kalindap/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:kp3551@nyu.edu">Email</a>
+      </div>
+    </header>
+
+    <!-- Bio -->
+    <section class="bio">
+      <p>Early-career product manager with a track record of shipping complex digital products across creative technology, AI, and consumer platforms. Obsessive about music and physical media — records, VHS, analog video — and the ways artists connect with the people who love their work. Currently finishing an MPS at NYU ITP.</p>
+    </section>
+
+    <!-- iPod Section -->
+    <section class="ipod-section">
+      <h2 class="section-title">Currently Spinning</h2>
+      <p class="section-intro" id="ipod-status">Connect to Spotify to see what's playing.</p>
+      <div class="ipod-container">
+        <img src="images/toppng.com-ipod-png-512x512.png" alt="iPod Classic">
+        <div class="ipod-screen" id="ipod-screen">
+          <div class="ipod-screen-header">
+            <span>Now Playing</span>
+            <span id="play-indicator">♫</span>
+          </div>
+          <div class="ipod-now-playing">
+            <div class="ipod-album-art" id="album-art">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" fill="#1a2a1a"/>
+              </svg>
+            </div>
+            <div class="ipod-track-info">
+              <div class="ipod-track-title" id="track-title">Connect Spotify</div>
+              <div class="ipod-track-artist" id="track-artist">to start playing</div>
+            </div>
+          </div>
+          <div class="ipod-progress">
+            <div class="ipod-progress-bar">
+              <div class="ipod-progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="ipod-progress-time">
+              <span id="current-time">0:00</span>
+              <span id="duration">--:--</span>
+            </div>
+          </div>
+        </div>
+        <!-- Interactive click wheel -->
+        <div class="ipod-click-wheel" id="click-wheel">
+          <button class="wheel-button wheel-center" id="wheel-play" title="Play/Pause">▶</button>
+          <button class="wheel-button wheel-top" id="wheel-menu" title="Menu">MENU</button>
+          <button class="wheel-button wheel-bottom" id="wheel-playpause" title="Play/Pause">▶❚❚</button>
+          <button class="wheel-button wheel-left" id="wheel-prev" title="Previous">◀◀</button>
+          <button class="wheel-button wheel-right" id="wheel-next" title="Next">▶▶</button>
+        </div>
+      </div>
+      <button class="spotify-connect-btn" id="connect-btn">Connect Spotify</button>
+      <p class="ipod-hint"><span id="hint-text">Requires Spotify Premium for playback</span></p>
+      <!-- Fallback embed for non-Premium users -->
+      <div class="spotify-embed" id="spotify-embed">
+        <iframe
+          style="border-radius:12px"
+          src="https://open.spotify.com/embed/playlist/5RrY53bmA59ZKj1pWNkr6O?utm_source=generator&theme=0"
+          width="100%"
+          height="152"
+          frameBorder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Selected Work -->
+    <section class="work">
+      <h2 class="section-title">Selected Work</h2>
+
+      <!-- Project 1: The Last Resort -->
+      <article class="project">
+        <div class="project-header">
+          <h3 class="project-title">The Last Resort</h3>
+          <p class="project-context">Scholastic</p>
+        </div>
+        <p class="project-meta">Role: Product Coordinator · Stack: AR, ML, mobile web</p>
+        <div class="project-body">
+          <p>Scholastic wanted to create an interactive experience tied to an upcoming middle grade novel — but it was a new initiative with no existing budget, no vendor, and no defined scope. I came in before anything was built.</p>
+          <p>I led the brainstorm process and built the pitch deck my manager used to secure the project internally. From there I owned the RFP process end-to-end — researching vendors, drafting requirements, and making the final recommendation (which was selected). I built scope and budget variations for stakeholders at different investment levels and produced internal presentation materials throughout.</p>
+          <p>The harder problem was the product itself. We had three constraints that shaped every decision: a tight budget, a requirement that the experience tie closely to the book narrative, and strict COPPA compliance that made standard AI approaches a liability. On the AI question specifically, we made a deliberate call to use an ML model that detected input language and returned scripted responses rather than a generative model — keeping the experience safe, on-brand, and out of regulatory and PR risk.</p>
+          <p>To make the AR puzzles work narratively, I sat in manuscript reviews with the editorial team and flagged moments where the story could be developed to support the interactive layer — character backstories, puzzle logic, moments of reveal. Some of those suggestions made it into the final book.</p>
+          <p>The Last Resort debuted at #6 on the NYT Middle Grade Bestsellers list. The sequel is in development, still built on the methodology, research, and vendor I recommended.</p>
+        </div>
+        <div class="project-links">
+          <a href="https://people.com/scholastic-announces-interactive-series-the-last-resort-exclusive-11692263" target="_blank" rel="noopener">People Exclusive</a>
+          <a href="https://www.publishersweekly.com/pw/by-topic/childrens/childrens-book-news/article/99399-scholastic-s-last-resort-continues-its-pioneering-path.html" target="_blank" rel="noopener">Publishers Weekly</a>
+          <a href="https://www.youtube.com/shorts/Flr3f1lqYbo" target="_blank" rel="noopener">Demo Video</a>
+        </div>
+        <div class="tags">
+          <span class="tag">AR</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Product Strategy</span>
+          <span class="tag">COPPA Compliance</span>
+          <span class="tag">Cross-team Project Management</span>
+          <span class="tag">Vendor Evaluation</span>
+        </div>
+      </article>
+
+      <!-- Project 2: Slack AI Agent -->
+      <article class="project">
+        <div class="project-header">
+          <h3 class="project-title">Slack AI Agent</h3>
+          <p class="project-context">Pretty Big Monster</p>
+        </div>
+        <p class="project-meta">Role: Builder and Designer · Stack: n8n, Tavily, Claude API</p>
+        <div class="project-body">
+          <p>Designers at PBM needed fast answers on AR and effects feasibility during client pitches. The old process meant messaging a developer, scheduling a call, or passing a deck with questions and waiting. It pulled developers into conversations too early and slowed down the pitch process at the moments that mattered most.</p>
+          <p>I started by thinking about this as a Notion doc — a reference resource designers could consult. Then a web app. But the real insight was simpler: the best ideas at PBM happen in Slack. That's where the work lives. So I built there instead.</p>
+          <p>The bot parses live documentation from Snap Lens Studio and TikTok Effect House and returns feasibility assessments directly in Slack, in the flow of the conversation where the question came up. I'd never worked in an agent builder before — figuring out n8n, wiring the APIs together, and configuring the Slack listener events and permissions was genuinely new territory that I navigated by outlining the architecture first and building iteratively.</p>
+          <p>I presented the finished tool with a full pitch deck to my manager, agency partners, and the dev team. The reception led to two outcomes: buy-in to deploy it on the company Slack (currently in network safety review), and the launch of an internal AI Strike Force where the team now experiments with AI tools and workflows on an ongoing basis. My manager is using the scaffolding as the foundation for a broader internal AI tool for the agency.</p>
+        </div>
+        <div class="project-links">
+          <a href="https://drive.google.com/file/d/1HXCuHB60PWg_SsBa92sxA9Xm3CGSrJQ2/view?usp=sharing" target="_blank" rel="noopener">Presentation Deck</a>
+        </div>
+        <div class="tags">
+          <span class="tag">n8n</span>
+          <span class="tag">Tavily</span>
+          <span class="tag">Claude API</span>
+          <span class="tag">Slack API</span>
+          <span class="tag">AI Agents</span>
+          <span class="tag">Product Strategy</span>
+        </div>
+      </article>
+
+      <!-- Project 3: Guardians of the Grocery -->
+      <article class="project">
+        <div class="project-header">
+          <h3 class="project-title">Guardians of the Grocery</h3>
+          <p class="project-context">Parsons Creative Hackathon</p>
+        </div>
+        <p class="project-meta">Role: Project Manager and Developer · Stack: Next.js, Supabase, ESP32-CAM, Claude Code</p>
+        <div class="project-body">
+          <p>The prompt was open-ended. We chose to build something that felt genuinely fun and community-driven, drawing on games we loved as reference points. The product: a web app where players hunt NYC bodega cats and collect them as digital trading cards, with cat data captured wirelessly via a custom ESP32-CAM hardware controller.</p>
+          <p>The decisions that won were about scope and integration. Rather than designing each trading card individually, we built a system where SVGs auto-populated from backend data — simple on the surface, but it required real architectural thinking to execute. We also prioritized a fully working demo over surface-level polish: functional login, cat data tied to user accounts, a live-populated NYC map, and a hardware controller that spoke wirelessly to the database in real time.</p>
+          <p>Not everything was shippable — but everything we showed worked, and the core experience held together as a system. That tradeoff was deliberate.</p>
+          <p>Won Best Software at the Parsons Creative Hackathon.</p>
+        </div>
+        <div class="project-links">
+          <a href="https://www.figma.com/deck/ehrmlMFYNA8KlDRC3rfZdT/Guardians-of-the-Grocery--Copy-?node-id=1-42&t=cENEbbjD1vzVBXIo-1" target="_blank" rel="noopener">Figma Deck</a>
+        </div>
+        <div class="tags">
+          <span class="tag">Next.js</span>
+          <span class="tag">Supabase</span>
+          <span class="tag">ESP32-CAM</span>
+          <span class="tag">Hardware</span>
+          <span class="tag">Full-Stack</span>
+          <span class="tag">Claude Code</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- Vibe Coded -->
+    <section class="vibe-coded">
+      <h2 class="section-title">Vibe Coded for a More Playful Web</h2>
+      <p class="section-subtitle">Creative experiments built with AI-assisted tools and curiosity.</p>
+      <div class="vibe-grid">
+        <a href="http://petridish.online/" target="_blank" rel="noopener" class="vibe-card">
+          <h3>Petri Dish Simulation</h3>
+          <p>Pixel-based drag and drop biology simulation that lets users create an artistic petri dish of color and pixel effects that evolves in real time.</p>
+        </a>
+        <a href="https://glitchcowboi.github.io/claude-artifact-glitch/" target="_blank" rel="noopener" class="vibe-card">
+          <h3>Video.Glitch.System 1.0</h3>
+          <p>Based on an analog glitch art practice — distort and corrupt video streams with a retro VHS aesthetic.</p>
+        </a>
+        <a href="https://digitalcommunitygarden.art/" target="_blank" rel="noopener" class="vibe-card">
+          <h3>Digital Community Garden</h3>
+          <p>A re-imagining of social media that encourages visitors to upload a small memory for friends and strangers to collectively enjoy.</p>
+        </a>
+        <a href="https://claude.ai/public/artifacts/248655b2-6e09-4fe0-96fb-162022586470" target="_blank" rel="noopener" class="vibe-card">
+          <h3>Release and Receive</h3>
+          <p>An interactive orb where users share thoughts and receive a relevant quote from the Dhammapada in return.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p class="name">Kalinda</p>
+      <div class="contact-footer">
+        <a href="https://linkedin.com/in/kalindap" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:kp3551@nyu.edu">Email</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Spotify Web Playback SDK -->
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+
+  <script>
+    // Spotify Configuration
+    const SPOTIFY_CLIENT_ID = '81f01f2aa41f4be3af943c020870da24';
+    const PLAYLIST_ID = '5RrY53bmA59ZKj1pWNkr6O';
+    const REDIRECT_URI = window.location.hostname === 'localhost'
+      ? 'http://localhost:3000/'
+      : 'https://kalinda-wrapped.vercel.app/';
+    const SCOPES = [
+      'user-modify-playback-state',
+      'user-read-playback-state',
+      'streaming',
+      'user-read-email',
+      'user-read-private'
+    ].join(' ');
+
+    // DOM Elements
+    const connectBtn = document.getElementById('connect-btn');
+    const trackTitle = document.getElementById('track-title');
+    const trackArtist = document.getElementById('track-artist');
+    const albumArt = document.getElementById('album-art');
+    const progressFill = document.getElementById('progress-fill');
+    const currentTime = document.getElementById('current-time');
+    const duration = document.getElementById('duration');
+    const playIndicator = document.getElementById('play-indicator');
+    const hintText = document.getElementById('hint-text');
+    const ipodStatus = document.getElementById('ipod-status');
+    const spotifyEmbed = document.getElementById('spotify-embed');
+
+    // Player state
+    let player = null;
+    let deviceId = null;
+    let accessToken = null;
+    let isPlaying = false;
+    let currentTrackDuration = 0;
+    let progressInterval = null;
+
+    // PKCE Helper Functions
+    function generateRandomString(length) {
+      const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      const values = crypto.getRandomValues(new Uint8Array(length));
+      return values.reduce((acc, x) => acc + possible[x % possible.length], '');
+    }
+
+    async function sha256(plain) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(plain);
+      return window.crypto.subtle.digest('SHA-256', data);
+    }
+
+    function base64urlencode(a) {
+      return btoa(String.fromCharCode.apply(null, new Uint8Array(a)))
+        .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    }
+
+    async function generateCodeChallenge(verifier) {
+      const hashed = await sha256(verifier);
+      return base64urlencode(hashed);
+    }
+
+    // OAuth Flow
+    async function initiateSpotifyAuth() {
+      const codeVerifier = generateRandomString(64);
+      const codeChallenge = await generateCodeChallenge(codeVerifier);
+
+      localStorage.setItem('spotify_code_verifier', codeVerifier);
+
+      const params = new URLSearchParams({
+        client_id: SPOTIFY_CLIENT_ID,
+        response_type: 'code',
+        redirect_uri: REDIRECT_URI,
+        scope: SCOPES,
+        code_challenge_method: 'S256',
+        code_challenge: codeChallenge
+      });
+
+      window.location.href = `https://accounts.spotify.com/authorize?${params.toString()}`;
+    }
+
+    async function exchangeCodeForToken(code) {
+      const codeVerifier = localStorage.getItem('spotify_code_verifier');
+
+      const response = await fetch('https://accounts.spotify.com/api/token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({
+          client_id: SPOTIFY_CLIENT_ID,
+          grant_type: 'authorization_code',
+          code: code,
+          redirect_uri: REDIRECT_URI,
+          code_verifier: codeVerifier
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.access_token) {
+        localStorage.setItem('spotify_access_token', data.access_token);
+        localStorage.setItem('spotify_refresh_token', data.refresh_token);
+        localStorage.setItem('spotify_token_expiry', Date.now() + (data.expires_in * 1000));
+        return data.access_token;
+      }
+
+      throw new Error('Failed to get access token');
+    }
+
+    async function refreshAccessToken() {
+      const refreshToken = localStorage.getItem('spotify_refresh_token');
+      if (!refreshToken) return null;
+
+      try {
+        const response = await fetch('https://accounts.spotify.com/api/token', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: new URLSearchParams({
+            client_id: SPOTIFY_CLIENT_ID,
+            grant_type: 'refresh_token',
+            refresh_token: refreshToken
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.access_token) {
+          localStorage.setItem('spotify_access_token', data.access_token);
+          localStorage.setItem('spotify_token_expiry', Date.now() + (data.expires_in * 1000));
+          if (data.refresh_token) {
+            localStorage.setItem('spotify_refresh_token', data.refresh_token);
+          }
+          return data.access_token;
+        }
+      } catch (e) {
+        console.error('Token refresh failed:', e);
+      }
+      return null;
+    }
+
+    async function getValidToken() {
+      const expiry = localStorage.getItem('spotify_token_expiry');
+      const token = localStorage.getItem('spotify_access_token');
+
+      if (token && expiry && Date.now() < parseInt(expiry) - 60000) {
+        return token;
+      }
+
+      return await refreshAccessToken();
+    }
+
+    // Format time helper
+    function formatTime(ms) {
+      const seconds = Math.floor(ms / 1000);
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    // Update UI with track info
+    function updateTrackInfo(track) {
+      if (!track) {
+        trackTitle.textContent = 'No track playing';
+        trackArtist.textContent = '';
+        return;
+      }
+
+      trackTitle.textContent = track.name;
+      trackArtist.textContent = track.artists.map(a => a.name).join(', ');
+      currentTrackDuration = track.duration_ms;
+      duration.textContent = formatTime(track.duration_ms);
+
+      // Update album art
+      if (track.album && track.album.images && track.album.images.length > 0) {
+        const imgUrl = track.album.images[track.album.images.length - 1].url;
+        albumArt.innerHTML = `<img src="${imgUrl}" alt="${track.album.name}">`;
+      }
+    }
+
+    // Update progress bar
+    function updateProgress(position) {
+      if (currentTrackDuration > 0) {
+        const percent = (position / currentTrackDuration) * 100;
+        progressFill.style.width = `${percent}%`;
+        currentTime.textContent = formatTime(position);
+      }
+    }
+
+    // Initialize Spotify Web Playback SDK
+    function initializePlayer(token) {
+      player = new Spotify.Player({
+        name: 'Kalinda Portfolio iPod',
+        getOAuthToken: cb => { cb(token); },
+        volume: 0.5
+      });
+
+      player.addListener('ready', async ({ device_id }) => {
+        deviceId = device_id;
+        console.log('Ready with Device ID', device_id);
+        hintText.textContent = 'Use the click wheel to control playback';
+        ipodStatus.textContent = 'Connected! Click play to start.';
+        connectBtn.classList.add('hidden');
+
+        // Start playing the playlist
+        await startPlaylist();
+      });
+
+      player.addListener('not_ready', ({ device_id }) => {
+        console.log('Device ID has gone offline', device_id);
+      });
+
+      player.addListener('player_state_changed', state => {
+        if (!state) return;
+
+        isPlaying = !state.paused;
+        playIndicator.textContent = isPlaying ? '▶' : '❚❚';
+
+        const track = state.track_window.current_track;
+        updateTrackInfo(track);
+        updateProgress(state.position);
+
+        // Update progress continuously while playing
+        if (progressInterval) clearInterval(progressInterval);
+        if (isPlaying) {
+          let pos = state.position;
+          progressInterval = setInterval(() => {
+            pos += 1000;
+            updateProgress(pos);
+          }, 1000);
+        }
+      });
+
+      player.addListener('initialization_error', ({ message }) => {
+        console.error('Init error:', message);
+        showFallbackEmbed();
+      });
+
+      player.addListener('authentication_error', ({ message }) => {
+        console.error('Auth error:', message);
+        localStorage.removeItem('spotify_access_token');
+        showFallbackEmbed();
+      });
+
+      player.addListener('account_error', ({ message }) => {
+        console.error('Account error:', message);
+        hintText.textContent = 'Spotify Premium required for playback';
+        showFallbackEmbed();
+      });
+
+      player.connect();
+    }
+
+    // Start playing the playlist
+    async function startPlaylist() {
+      const token = await getValidToken();
+      if (!token || !deviceId) return;
+
+      try {
+        await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            context_uri: `spotify:playlist:${PLAYLIST_ID}`,
+            offset: { position: 0 }
+          })
+        });
+      } catch (e) {
+        console.error('Failed to start playlist:', e);
+      }
+    }
+
+    // Show fallback embed
+    function showFallbackEmbed() {
+      spotifyEmbed.classList.add('visible');
+      ipodStatus.textContent = 'Listen to the playlist below.';
+      hintText.textContent = 'Spotify Premium required for iPod playback';
+    }
+
+    // Click wheel controls
+    document.getElementById('wheel-play').addEventListener('click', () => {
+      if (player) player.togglePlay();
+    });
+
+    document.getElementById('wheel-playpause').addEventListener('click', () => {
+      if (player) player.togglePlay();
+    });
+
+    document.getElementById('wheel-prev').addEventListener('click', () => {
+      if (player) player.previousTrack();
+    });
+
+    document.getElementById('wheel-next').addEventListener('click', () => {
+      if (player) player.nextTrack();
+    });
+
+    document.getElementById('wheel-menu').addEventListener('click', async () => {
+      // Menu button cycles volume: 50% -> 75% -> 100% -> 25% -> 50%
+      if (player) {
+        const vol = await player.getVolume();
+        const newVol = vol >= 1 ? 0.25 : vol + 0.25;
+        player.setVolume(newVol);
+        hintText.textContent = `Volume: ${Math.round(newVol * 100)}%`;
+        setTimeout(() => {
+          hintText.textContent = 'Use the click wheel to control playback';
+        }, 1500);
+      }
+    });
+
+    // Connect button click
+    connectBtn.addEventListener('click', initiateSpotifyAuth);
+
+    // Initialize on page load
+    window.onSpotifyWebPlaybackSDKReady = async () => {
+      // Check for auth code in URL (callback from Spotify)
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get('code');
+
+      if (code) {
+        // Clear the URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+
+        try {
+          accessToken = await exchangeCodeForToken(code);
+          initializePlayer(accessToken);
+        } catch (e) {
+          console.error('Token exchange failed:', e);
+          showFallbackEmbed();
+        }
+        return;
+      }
+
+      // Check for existing valid token
+      accessToken = await getValidToken();
+      if (accessToken) {
+        connectBtn.textContent = 'Reconnecting...';
+        initializePlayer(accessToken);
+      }
+    };
+  </script>
+</body>
+</html>

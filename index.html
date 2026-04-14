@@ -300,7 +300,7 @@
 
     .ipod-container {
       position: relative;
-      width: 280px;
+      width: 340px;
       margin: 0 auto;
     }
 
@@ -312,40 +312,40 @@
 
     .ipod-screen {
       position: absolute;
-      top: 10.5%;
-      left: 17.5%;
-      width: 65%;
-      height: 37%;
+      top: 11%;
+      left: 18%;
+      width: 64%;
+      height: 35%;
       background: linear-gradient(180deg, #2a3a2a 0%, #1a2a1a 100%);
       display: flex;
       flex-direction: column;
-      padding: 8px;
+      padding: 10px;
       overflow: hidden;
-      border-radius: 2px;
+      border-radius: 3px;
     }
 
     .ipod-screen-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 8px;
+      font-size: 10px;
       color: #4a5a4a;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       font-family: 'Chicago', 'Inter', sans-serif;
     }
 
     .ipod-now-playing {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       flex: 1;
     }
 
     .ipod-album-art {
-      width: 52px;
-      height: 52px;
+      width: 65px;
+      height: 65px;
       background: linear-gradient(135deg, #1DB954 0%, #0d5a2a 100%);
-      border-radius: 2px;
+      border-radius: 3px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -367,7 +367,7 @@
     }
 
     .ipod-track-title {
-      font-size: 9px;
+      font-size: 11px;
       color: #8fa88f;
       font-weight: 500;
       white-space: nowrap;
@@ -376,7 +376,7 @@
     }
 
     .ipod-track-artist {
-      font-size: 8px;
+      font-size: 10px;
       color: #5a7a5a;
       white-space: nowrap;
       overflow: hidden;
@@ -405,7 +405,7 @@
     .ipod-progress-time {
       display: flex;
       justify-content: space-between;
-      font-size: 7px;
+      font-size: 9px;
       color: #4a6a4a;
     }
 
@@ -561,7 +561,7 @@
       }
 
       .ipod-container {
-        width: 220px;
+        width: 280px;
       }
 
       .ipod-section {
@@ -773,8 +773,8 @@
     const SPOTIFY_CLIENT_ID = '81f01f2aa41f4be3af943c020870da24';
     const PLAYLIST_ID = '5RrY53bmA59ZKj1pWNkr6O';
     const REDIRECT_URI = window.location.hostname === 'localhost'
-      ? 'http://localhost:3000/'
-      : 'https://kalinda-wrapped.vercel.app/';
+      ? 'http://localhost:3000'
+      : 'https://kalinda-wrapped.vercel.app';
     const SCOPES = [
       'user-modify-playback-state',
       'user-read-playback-state',
@@ -1111,4 +1111,5 @@
     };
   </script>
 </body>
-</html> 
+</html>
+
